@@ -43,13 +43,13 @@ async function inertSignipuser(token){
             token:userverify.token,
             forgetpassword:{}
         });
-        const link="https://main--alfred-registration-page.netlify.app/login"
+        
         await newUser.save();
         await userverify.deleteOne();
         console.log("deleted aithu");
-        const content=`<h2>Hey Registration sucess</h2><p>just login and check the new updates <br> <a href= "${link}">Click here </a> to move on  </p> <p>thank you have a nice day</p>`
+        const content=`<h2>Hey Registration sucess</h2><p>just login and check the new updates  </p> <p>thank you have a nice day</p>`
         sendMail(newUser.email,"verification Sucessfull",content);
-        return `<h2>Hey Registration sucess</h2><p>just login and check the new updates <br> <a href= "${link}">Click here </a> to move on  </p> <p>thank you have a nice day</p>`
+        return `<h2>Hey Registration sucess</h2><p>just login and check the new updates  </p> <p>thank you have a nice day</p>`
       }
       return `<h2>Hey Registration faild</h2><p>just try again losser..................</p> <p>thank you have a bad day</p>`
       
