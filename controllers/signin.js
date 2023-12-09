@@ -43,7 +43,7 @@ async function inertSignipuser(token){
             token:userverify.token,
             forgetpassword:{}
         });
-        const link="http://localhost:5173/login"
+        const link="https://main--alfred-registration-page.netlify.app/login"
         await newUser.save();
         await userverify.deleteOne();
         console.log("deleted aithu");
