@@ -15,7 +15,7 @@ async function inersetVerifyuser(email,name,password){
     
     const newUser =new verifyuser({name:name,email:email,password:hashpassword,token:token});
     console.log(newUser);
-    const activationlink=`http://localhost:4000/signin/${token}`
+    const activationlink=`https://auth-backend-6dn1.onrender.com/signin/${token}`
     const content=`<h2>Hey hi welcome to our Registration page</h2><p>thank you for signing up click <br> on the below link to activate </p>
     <a href=${activationlink}>click here</a> <p>thank you have a nice day</p>`
 
