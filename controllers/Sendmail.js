@@ -12,7 +12,7 @@ const Trasport= nodemailer.createTransport({
 });
 function sendMail(toEmail,subject,content){
     const mailoptions={
-        from:'harshithalfred@gmail.com',
+        from:'Chatz <chatz.text.app@gmail.com>',
         to: toEmail,
         subject: subject,
         html:content,
