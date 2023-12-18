@@ -6,7 +6,7 @@ const User=new Schema({
     password:{type:String,required:true,},
     joinedon:{type:Date,default:Date.now()},
     token:{type:String,required:true,},
-    forgetpasswrod:{type:String,otp:String,},
+    forgetpassword:{type:String,required:true,},
 },
 {collection:'User'});
 module.exports= mongoose.model('User',User);

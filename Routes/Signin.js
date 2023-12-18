@@ -9,7 +9,7 @@ router.get('/:token',async (req,res)=>{
      res.status(200).send(response)}
     
   catch(e){
-    res.status(200).send(`<html><body><h2>Hey Registration faild</h2><p>unexpected error happened try again losser..................</p> <p>thank you have a bad day</p></body></html>`);
+    res.status(200).send(`<html><body><h2>Hey Registration faild</h2><p>unexpected error happened try again ..................</p> <p>thank you have a nice day</p></body></html>`);
     console.log(e)}
 });
 router.post('/verify',async (req,res)=>{
