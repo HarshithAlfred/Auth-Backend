@@ -6,6 +6,7 @@ const {sendMail}=require("../controllers/Sendmail.js");
 const mongoose=require("mongoose");
 const verifyuser = require("../Modules/verifyuser.js");
 const jwt=require("jsonwebtoken");
+const img='../assets/chaat2.png';
 async function inersetVerifyuser(email,name,password){
  try{
     const salt=await brypt.genSalt(10);
@@ -14,9 +15,8 @@ async function inersetVerifyuser(email,name,password){
     
     const newUser =new verifyuser({name:name,email:email,password:hashpassword,token:token});
     console.log(newUser);
-    const activationlink=`https://auth-backend-6dn1.onrender.com/signin/${token}`
-    //const activationlink=`http://localhost:4000/signin/${token}`
-    const content=`<h2>Hey hi welcome to our Registration page</h2><p>thank you for signing up click <br> on the below link to activate </p>
+    const activationlink=`${process.env.backend}/signin/${token}`
+    const content=`<h2>Hey hi ${newUser.name} , welcome to Chatz</h2><p>thank you for signing up click <br> on the below link to activate </p>
     <a href=${activationlink}>click here</a> <p>thank you have a nice day</p>`
 
 await newUser.save();
@@ -51,6 +51,14 @@ async function passcheckuser(token,pass){
                  margin: 0;
                  padding: 0;
              }
+             .head{
+                background:linear-gradient(-340deg, yellow 0%,red);
+                font-size: 40px;
+                background-clip: text;
+                color:transparent;
+                padding:0;
+                margin: 0;
+            }
              .container {
                  max-width: 600px;
                  margin: 50px auto;
@@ -78,9 +86,11 @@ async function passcheckuser(token,pass){
      <body>
          <div class="container">
              <h1>Password Changed Successfully</h1>
-             <p>Hey, your password has been successfully changed. If you did not initiate this change, please contact us immediately.</p>
+             <p>Hey <h3>${checkuser.name}</h3>, your password has been successfully changed. If you did not initiate this change, please contact us immediately.</p>
              <p>Try logging in with your new password.</p>
              <p>Thank you and have a nice day!</p>
+             <p>Best regards,</p>
+             <h1 class='head'>Chatz</h1>
          </div>
      </body>
      </html>
@@ -105,9 +115,9 @@ async function inertSignipuser(token){
         await newUser.save();
         await userverify.deleteOne();
         console.log("deleted aithu");
-        const content=`<h2>Hey Registration Success</h2><p>just login and check the new updates  </p> <p>thank you have a nice day</p>`
-        sendMail(newUser.email,"verification Sucessfull",content);
-        return `<h2>Hey Registration Success</h2><p>just login and check the new updates  </p> <p>thank you have a nice day</p>`
+        const content=`<h2>Hey ${newUser.name} Registration Success</h2><p>just login and check the new updates  </p> <p>thank you have a nice day</p>`
+        sendMail(newUser.email,"Verification Sucessfull",content);
+        return `<h2>Hey ${newUser.name} Registration Success</h2><p>just login and check the new updates  </p> <p>thank you have a nice day</p>`
       }
       return `<h2>Hey Registration Failed</h2><p>just try again ..................</p> <p>thank you have nice day</p>`
       
