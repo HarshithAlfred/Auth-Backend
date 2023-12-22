@@ -6,7 +6,12 @@ const { Server } = require("socket.io");
 const cors = require("cors");
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server);
+const io = new Server(server,{
+    cors: {
+      origin: process.env.frontend,
+      methods: ["GET", "POST"]
+    }
+  });
 
 app.use(cors());
 try{
