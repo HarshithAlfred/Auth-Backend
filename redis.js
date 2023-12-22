@@ -4,7 +4,7 @@ dotenv.config();
 
 
 const client = createClient({
-    //url:process.env.redis_url,
+    url:process.env.redis_url,
 });
 
 client.on("connect",()=>{
