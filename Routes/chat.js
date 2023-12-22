@@ -14,7 +14,7 @@ const io = new Server(server,{
   });
 
 app.use(cors());
-try{console.log("still not inside",socket)
+try{
 io.on("connection", (socket) => {
     console.log("user connected");
     onsole.log("inside",socket)
