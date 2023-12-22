@@ -14,10 +14,10 @@ const io = new Server(server,{
   });
 
 app.use(cors());
-try{
+try{console.log("still not inside",socket)
 io.on("connection", (socket) => {
     console.log("user connected");
-
+    onsole.log("inside",socket)
     socket.on('chat message', (data) => {
         console.log(`message from : ${data.name} : ${data.message}`);
         io.emit("chat message", data);
