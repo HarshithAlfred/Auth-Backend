@@ -17,7 +17,7 @@ app.use(cors());
 try{
 io.on("connection", (socket) => {
     console.log("user connected");
-    onsole.log("inside",socket)
+    console.log("inside",socket)
     socket.on('chat message', (data) => {
         console.log(`message from : ${data.name} : ${data.message}`);
         io.emit("chat message", data);
@@ -29,9 +29,9 @@ io.on("connection", (socket) => {
 });
 
 const PORT =4001;
-
-server.listen(PORT, () => {
-    console.log(`Server running on port: ${PORT}`);
+const IP_ADDRESS ="auth-backend-6dn1.onrender.com"
+server.listen(PORT,IP_ADDRESS, () => {
+    console.log(`Server running on https://${IP_ADDRESS}:${PORT}`);
 });
 }
 catch(e){
