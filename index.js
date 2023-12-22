@@ -7,8 +7,10 @@ const home=require("./Routes/home.js")
 const chanegapss =require("./Routes/changepass.js")
 const chat=require("./Routes/chat.js")
 const app=express();
+const dotenv= require("dotenv")
+dotenv.config()
 app.use(express.json());
-app.use(cors({origin:"*"}));
+app.use(cors({origin:process.env.frontend}));
 const port=4000;
 connectDB();
 
